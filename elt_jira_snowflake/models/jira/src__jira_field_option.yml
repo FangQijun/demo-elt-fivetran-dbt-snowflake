@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: "jira"
+    description: "This schema contains tables for jira endpoint"
+    database: "{%- if target.name == \"prod\" -%} raw {%- else -%} dev_raw {%- endif -%}"
+    schema: "jira"
+    tables:
+      - name: "field_option"
+        description: "Active records for raw field option object"
+        columns:
+          - name: "id"
+            description: "Primary key for jira option"
+            data_tests:
+              - "not_null"
+              - "unique"
